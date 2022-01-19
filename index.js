@@ -90,12 +90,12 @@ Car.prototype.fill = function (gallons) {
 
 
 const testCar = new Car('ford', 32)
-console.log(testCar)
+// console.log(testCar)
 testCar.fill(32)
 // console.log(testCar.fill(3))
-console.log(testCar)
-testCar.fill(10)
-console.log(testCar)
+// console.log(testCar)
+// testCar.fill(10)
+// console.log(testCar)
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -103,10 +103,17 @@ console.log(testCar)
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favorateToy) {
+  Person.call(this, name, age)
+  this.favoriteToy = favorateToy;
 }
-
+Baby.prototype = Person.prototype;
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
+}
+const testBaby = new Baby('Carlos', 2, 'remote')
+console.log(testBaby)
+console.log(testBaby.play())
 
 /* 
   TASK 4
