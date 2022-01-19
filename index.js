@@ -39,11 +39,25 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {
+  this.name = name
+  this.age = age
+  this.stomach = []
+
+}
+Person.prototype.eat = function (edible) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(edible)
+  }
 }
 
+Person.prototype.poop = function () {
+  this.stomach = []
+}
 
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`
+}
 
 
 
@@ -63,11 +77,25 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(model, milesPerGallon) {
+  this.model = model
+  this.milesPerGallon = milesPerGallon
+  this.tank = 0
+  this.odometer = 0
+
+}
+Car.prototype.fill = function (gallons) {
+  this.tank = this.tank + gallons
 }
 
 
+const testCar = new Car('ford', 32)
+console.log(testCar)
+testCar.fill(32)
+// console.log(testCar.fill(3))
+console.log(testCar)
+testCar.fill(10)
+console.log(testCar)
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -76,7 +104,7 @@ function Car() {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby() {
- 
+
 }
 
 
@@ -93,14 +121,14 @@ function Baby() {
 ///////// END OF CHALLENGE /////////
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
-function foo(){
+function foo() {
   console.log('its working!');
   return 'bar';
 }
 foo();
 module.exports = {
   foo,
-  Person, 
+  Person,
   Car,
   Baby
 }
